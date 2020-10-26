@@ -49,8 +49,11 @@ const styles = {
 //   }
 // }
 
+const Scoring = ({ score }) => <p>ocena: {score}</p>;
+const Author = ({ author }) => <p>Autor: {author}</p>;
+
 // //komponent funkcyjny
-function News({ header, intro }) {
+function News({ header, intro, author }) {
   // const { h2, p } = props;
   const [score, setScore] = useState(5);
   //setScore(10); nie tutaj
@@ -58,7 +61,8 @@ function News({ header, intro }) {
     <div style={styles}>
       <h2>{header}</h2>
       <p style={styles.para}>{intro}</p>
-      <p>{score}</p>
+      <Author author={author} />
+      <Scoring score={score} />
     </div>
   );
 }
@@ -74,19 +78,37 @@ function News({ header, intro }) {
 // }
 
 const data = [
-  { header: 'Nagłówek 1', intro: 'intro 1' },
-  { header: 'Nagłówek 2:breaking news', intro: 'intro 2' },
   {
-    header: 'Nagłówek 3: nie mogę spać bo zrzucam kota z parapetu',
-    intro: 'intro 3',
+    id: 1,
+    author: 'Jan Brzęczek',
+    title: 'Pilne: Co to był za dzień!',
+    intro: 'Tego świat jeszcze nie widział',
+  },
+  {
+    id: 2,
+    author: 'Jaś Brzęczek',
+    title: 'Wszyscy zazdroszą Polakom!',
+    intro: 'Takiego clickbajtowego tytułu jeszcze nikt nie wymyślił',
+  },
+  {
+    id: 3,
+    author: 'Janusz Brzęczek',
+    title: 'Adam Małysz Zgolił wąs',
+    intro:
+      'Po przegranym zakładzie z Piotrem Żyłą nasz mistrz olimpijski zgolił wąsy',
   },
 ];
 
 function App() {
   return (
     <div>
-      {data.map((elem, index) => (
-        <News key={`new-${index}`} header={elem.header} intro={elem.intro} />
+      {data.map((elem) => (
+        <News
+          key={`news-${elem.id}`}
+          header={elem.title}
+          intro={elem.intro}
+          author={elem.author}
+        />
       ))}
 
       {/* <News header='Nagłówek 1' intro='intro 1' />
