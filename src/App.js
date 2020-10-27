@@ -1,41 +1,20 @@
 import React from 'react';
 
-import News from '../src/articles/containers/News';
+import Header from './Components/Header';
+import Content from './Components/Content';
+import Footer from './Components/Footer';
+import Articles from './pages/Articles';
+// import { Logo, NavLink } from './Components/Header';
 import './App.css';
-
-const data = [
-  {
-    id: 1,
-    author: 'Jan Brzęczek',
-    title: 'Pilne: Co to był za dzień!',
-    intro: 'Tego świat jeszcze nie widział',
-  },
-  {
-    id: 2,
-    author: 'Jaś Brzęczek',
-    title: 'Wszyscy zazdroszą Polakom!',
-    intro: 'Takiego clickbajtowego tytułu jeszcze nikt nie wymyślił',
-  },
-  {
-    id: 3,
-    author: 'Janusz Brzęczek',
-    title: 'Adam Małysz Zgolił wąs',
-    intro:
-      'Po przegranym zakładzie z Piotrem Żyłą nasz mistrz olimpijski zgolił wąsy',
-  },
-];
 
 function App() {
   return (
     <div>
-      {data.map((elem) => (
-        <News
-          key={`news-${elem.id}`}
-          header={elem.title}
-          intro={elem.intro}
-          author={elem.author}
-        />
-      ))}
+      <Header />
+      <Content>
+        <Articles />
+      </Content>
+      <Footer />
     </div>
   );
 }
